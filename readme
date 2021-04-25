@@ -1,6 +1,7 @@
-pyspark --packages graphframes:graphframes:0.5.0-spark2.1-s_2.11
-
-/usr/local/Cellar/apache-spark/3.1.1/bin/spark-submit /Users/emre/github/BigData/transportTest.py (did not work)
-
 to find where spark is installed:
     brew info apache-spark
+
+spark-shell --packages graphframes:graphframes:0.8.1-spark3.0-s_2.12 
+pyspark --packages graphframes:graphframes:0.8.1-spark3.0-s_2.12
+
+spark-submit --packages graphframes:graphframes:0.8.1-spark3.0-s_2.12 graphFramesGettingStarted.py
