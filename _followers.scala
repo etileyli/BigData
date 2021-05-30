@@ -40,5 +40,24 @@ timeStampEdges.show(10)
 val followersGraph = GraphFrame(nameVertices, timeStampEdges)
 followersGraph.cache()
 
-println(s"Total Number of Names: ${followersGraph.vertices.count()}")
-println(s"Total Number of Connections in Graph: ${followersGraph.edges.count()}")
+println(s"Total Number of Names: ${followersGraph.vertices.count()}")   // Total Number of Names: 617680
+println(s"Total Number of Connections in Graph: ${followersGraph.edges.count()}")  // Total Number of Connections in Graph: 2313358
+
+//
+// QUERYING THE GRAPH
+//
+import org.apache.spark.sql.functions.{desc, asc}
+followersGraph.edges.orderBy(desc("src")).show(10)
+followersGraph.edges.orderBy(asc("src")).show(10)
+
+followersGraph.edges.groupBy("src", "dst").count().orderBy(desc("src")).show(10)
+followersGraph.edges.groupBy("src", "dst").count().orderBy(asc("src")).show(10)
+
+followersGraph.edges.select("src").show(10)
+followersGraph.edges.select("src").count()
+followersGraph.edges.filter(($"src" rlike "864E7B4F47CF11E6A25372AAB334021AAE81A445")).show()
+
+val user01Edges = followersGraph.where("src = '864E7B4F47CF11E6A25372AAB334021AAE81A445' OR dst = '864E7B4F47CF11E6A25372AAB334021AAE81A445'")
+val subgraph = GraphFrame(followersGraph.vertices, user01Edges)
+subgraph.vertices.show(100)
+subgraph.edges.show(100)
