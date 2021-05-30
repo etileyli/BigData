@@ -56,6 +56,11 @@ followersGraph.edges.groupBy("src", "dst").count().orderBy(asc("src")).show(10)
 followersGraph.edges.select("src").show(10)
 followersGraph.edges.select("src").count()
 followersGraph.edges.filter(($"src" rlike "864E7B4F47CF11E6A25372AAB334021AAE81A445")).show()
+followersGraph.edges.filter(($"dst" rlike "864E7B4F47CF11E6A25372AAB334021AAE81A445")).show()
+followersGraph.vertices.filter(($"id" rlike "864E7B4F47CF11E6A25372AAB334021AAE81A445")).show()
+
+followersGraph.edges.filter($"src".contains("864E7B4F47CF11E6A25372AAB334021AAE81A445") || $"dst".contains("864E7B4F47CF11E6A25372AAB334021AAE81A445")).show()
+
 
 val user01Edges = followersGraph.where("src = '864E7B4F47CF11E6A25372AAB334021AAE81A445' OR dst = '864E7B4F47CF11E6A25372AAB334021AAE81A445'")
 val subgraph = GraphFrame(followersGraph.vertices, user01Edges)
