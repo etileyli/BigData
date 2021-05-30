@@ -68,3 +68,45 @@ val user01Edges = followersGraph.edges.where(filterPar)
 val subgraph = GraphFrame(followersGraph.vertices, user01Edges)
 subgraph.vertices.show(100)
 subgraph.edges.show(100)
+
+// MOTIF FINDING
+//val motifs = followersGraph.find("(a)-[ab]->(b); (b)-[bc]->(c); (c)-[ca]->(a)")
+
+//spark.conf.set("spark.sql.legacy.timeParserPolicy","LEGACY")
+
+//motifs.selectExpr("*",
+//    "to_timestamp(ab.`Start Date`, 'yyyy/MM/dd HH:mm:ss.SSSSSSSSS') as abStart",
+//    "to_timestamp(bc.`Start Date`, 'yyyy/MM/dd HH:mm:ss.SSSSSSSSS') as bcStart",
+//    "to_timestamp(ca.`Start Date`, 'yyyy/MM/dd HH:mm:ss.SSSSSSSSS') as caStart")
+//    .where("ca.`Bike #` = bc.`Bike #`")
+
+// GRAPH ALGORITHMS
+
+import org.apache.spark.sql.functions.desc
+val ranks = followersGraph.pageRank.resetProbability(0.15).maxIter(10).run()
+ranks.vertices.orderBy(desc("pagerank")).select("id", "pagerank").show(10)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//.
