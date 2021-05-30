@@ -6,14 +6,14 @@ names.distinct().count()
 // Result = (Long = 16605113) (Also line count)
 
 // Get distinct ProfileIDs
-val nameVertices01 = names.select("ProfileID").distinct() // (select distinct applies to the ENTIRE row, not just a field.)
+val nameVertices01 = names.select("ProfileID").withColumnRenamed("ProfileID", "id").distinct() // (select distinct applies to the ENTIRE row, not just a field.)
 
 // Count of distinct ProfileIDs (Vertices)
 nameVertices01.count()
 // Result = (Long = 2016596)
 
 // Get distinct ProfileIDs
-val nameVertices02 = names.select("ProfileID2").distinct()
+val nameVertices02 = names.select("ProfileID2").withColumnRenamed("ProfileID2", "id").distinct()
 
 // Count of distinct ProfileID2s (Vertices)
 nameVertices02.count()
@@ -26,4 +26,16 @@ val nameVerticesTemp = nameVertices01.union(nameVertices02)
 // Aggregate Name Vertices
 val nameVertices = nameVerticesTemp.distinct()
 nameVertices.count()
-// Result = (Long = 3071487 )
+// Result = (Long = 3071487)
+nameVertices.show(10)
+
+val timeStampEdges = names.withColumnRenamed("ProfileID", "src").withColumnRenamed("ProfileID2", "dst")
+timeStampEdges.count()
+timeStampEdges.show(10)
+// Result = (Long = 16605113)
+
+val followersGraph = GraphFrame(nameVertices, timeStampEdges)
+followersGraph.cache()
+
+println(s"Total Number of Names: ${followersGraph.vertices.count()}")
+println(s"Total Number of Connections in Graph: ${followersGraph.edges.count()}")
