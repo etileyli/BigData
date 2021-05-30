@@ -61,8 +61,10 @@ followersGraph.vertices.filter(($"id" rlike "864E7B4F47CF11E6A25372AAB334021AAE8
 
 followersGraph.edges.filter($"src".contains("864E7B4F47CF11E6A25372AAB334021AAE81A445") || $"dst".contains("864E7B4F47CF11E6A25372AAB334021AAE81A445")).show()
 
+val filterPar = $"src".contains("864E7B4F47CF11E6A25372AAB334021AAE81A445") || $"dst".contains("864E7B4F47CF11E6A25372AAB334021AAE81A445")
+followersGraph.edges.filter(filterPar).show()
 
-val user01Edges = followersGraph.where("src = '864E7B4F47CF11E6A25372AAB334021AAE81A445' OR dst = '864E7B4F47CF11E6A25372AAB334021AAE81A445'")
+val user01Edges = followersGraph.edges.where(filterPar)
 val subgraph = GraphFrame(followersGraph.vertices, user01Edges)
 subgraph.vertices.show(100)
 subgraph.edges.show(100)
