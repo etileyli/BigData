@@ -1,4 +1,6 @@
-FileSize: 377MB
+FileSize:           377MB
+Graph Vertices:  617680
+Graph Edges:    2313358
 
 pageRank: (ResProb: 0.15)
   Spark:
