@@ -1,5 +1,8 @@
+import org.graphframes.GraphFrame
+
 // Load data
-val names = spark.read.option("header","true").csv("data/followers")
+// val names = spark.read.option("header","true").csv("data/followers")
+val names = spark.read.option("header","true").csv("data/followersSmall.csv")
 
 // Count of entries in file
 names.distinct().count()
