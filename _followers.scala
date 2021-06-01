@@ -1,8 +1,12 @@
 import org.graphframes.GraphFrame
+import org.apache.spark.sql.functions.expr
+import org.apache.spark.sql.functions.desc
+import org.apache.spark.sql.functions.{desc, asc}
 
 // Load data
 // val names = spark.read.option("header","true").csv("data/followers")
-val names = spark.read.option("header","true").csv("data/followersSmall.csv")
+val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace.csv")
+//val names = spark.read.option("header","true").csv("data/followersSmall.csv")
 
 // Count of entries in file
 names.distinct().count()
@@ -46,7 +50,6 @@ println(s"Total Number of Connections in Graph: ${followersGraph.edges.count()}"
 //
 // QUERYING THE GRAPH
 //
-import org.apache.spark.sql.functions.{desc, asc}
 followersGraph.edges.orderBy(desc("src")).show(10)
 followersGraph.edges.orderBy(asc("src")).show(10)
 
@@ -82,29 +85,20 @@ subgraph.edges.show(100)
 
 // GRAPH ALGORITHMS
 
-import org.apache.spark.sql.functions.desc
-val ranks = followersGraph.pageRank.resetProbability(0.15).maxIter(10).run()
-ranks.vertices.orderBy(desc("pagerank")).select("id", "pagerank").show(10)
+// PageRank (It takes ~1 hour to finish)
+//val ranks = followersGraph.pageRank.resetProbability(0.15).maxIter(10).run()
+//ranks.vertices.orderBy(desc("pagerank")).select("id", "pagerank").show(10)
 
+// Breadth-First-Search
+// SUCCESSFUL RUNS
+// via 864E7B4F47CF11E6A25372AAB334021AAE81A445
+followersGraph.bfs.fromExpr("id = '601BB03C9BF3B57BB6E9DCA48218386BE08FA897'").toExpr("id = 'A77BE9FDC675901E5D01F116205253C8179C187C'").maxPathLength(2).run().show(10)
 
+followersGraph.bfs.fromExpr("id = '601BB03C9BF3B57BB6E9DCA48218386BE08FA897'").toExpr("id = 'A77BE9FDC675901E5D01F116205253C8179C187C'").maxPathLength(3).run().show(10)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// VIA C39F94D9576B1548FCCE1029FA68882F31888ABB and 9D36FF9F3473B1D85FA75155AAE4439A7DEEE526
+followersGraph.bfs.fromExpr("id = 'DD387DC815CC8BD9CE423D96CD5C9F7A5D83E155'").toExpr("id = 'D5E0FF018390A9061975F25CB96E574288A3BD69'").maxPathLength(3).run().show(10)
+// followersGraph.bfs.fromExpr("id = 'DD387DC815CC8BD9CE423D96CD5C9F7A5D83E155'").toExpr("id = 'D5E0FF018390A9061975F25CB96E574288A3BD69'").maxPathLength(3).run().show(10)
 
 
 
