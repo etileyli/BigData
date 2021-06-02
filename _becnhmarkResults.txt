@@ -38,8 +38,9 @@ pageRank: (ResProb: 0.15)
       +--------------------+------------------+
 
 
-/// ************************** NEO4J ********************
-File is 23133 lines and 2.6 MB
+/// ************************** File is 23133 lines and 2.6 MB ********************
+
+// ****************** NEO4J
 Added 37962 labels, created 37962 nodes, set 37962 properties, completed after 299637 ms (~5 min).
 
 Set 22880 properties, created 22880 relationships, completed after 523690 ms (~9 min).
@@ -58,8 +59,14 @@ Started streaming 15371 records after 9 ms and completed after 11 ms.
 "245901C10B50A360EFFBEE9C0AFFD2299CCEB0BF"	1.8025228285078365
 "B8C900EE47C23F2F1702205E8CC99DFB13976527"	1.7174628725956393
 
-/// spark
-followersSmallNoWhiteSpace_271302.csv  (06.15-06.41)
+// ****************** Spark
+
+
+
+/// ************************** File is 271302 lines and 30.1 MB ******************
+
+// Spark
+followersSmallNoWhiteSpace_271302.csv  (06.15-06.41 -> ~26 min)
 
 +--------------------+------------------+
 |                  id|          pagerank|
@@ -76,6 +83,9 @@ followersSmallNoWhiteSpace_271302.csv  (06.15-06.41)
 |CD255F50C499F1703...| 66.25564520571575|
 +--------------------+------------------+
 only showing top 10 rows
+
+/// neo4j
+
 
 
 
