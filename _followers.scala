@@ -1,3 +1,5 @@
+// call: spark-shell --packages graphframes:graphframes:0.8.1-spark3.0-s_2.12
+
 import org.graphframes.GraphFrame
 import org.apache.spark.sql.functions.expr
 import org.apache.spark.sql.functions.desc
@@ -5,8 +7,9 @@ import org.apache.spark.sql.functions.{desc, asc}
 
 // Load data
 // val names = spark.read.option("header","true").csv("data/followers")
-val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace.csv")
-//val names = spark.read.option("header","true").csv("data/followersSmall.csv")
+// val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace.csv")
+val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace_271302.csv")
+// val names = spark.read.option("header","true").csv("data/followersSmall.csv")
 
 // Count of entries in file
 names.distinct().count()
@@ -86,8 +89,8 @@ subgraph.edges.show(100)
 // GRAPH ALGORITHMS
 
 // PageRank (It takes ~1 hour to finish)
-//val ranks = followersGraph.pageRank.resetProbability(0.15).maxIter(10).run()
-//ranks.vertices.orderBy(desc("pagerank")).select("id", "pagerank").show(10)
+val ranks = followersGraph.pageRank.resetProbability(0.15).maxIter(10).run()
+ranks.vertices.orderBy(desc("pagerank")).select("id", "pagerank").show(10)
 
 // Breadth-First-Search
 // SUCCESSFUL RUNS

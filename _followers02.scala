@@ -25,11 +25,11 @@ followersGraphTemp.edges.show()
 
 val sourceNode = "emre"
 val destNode = "gizem"
-followersGraphTemp.bfs.fromExpr("id = 'emre'").toExpr("id = 'gizem'").maxPathLength(2).run().show(10)
+// followersGraphTemp.bfs.fromExpr("id = 'emre'").toExpr("id = 'gizem'").maxPathLength(2).run().show(10)
 // SUCCESFUL SEARCHES
 // followersGraphTemp.bfs.fromExpr("id = 'A43686FA05B9706827AD2D71AC062D22BC20C352'").toExpr("id = 'F38C2741C973F0A909B346862661087AA9204369'").maxPathLength(2).run().show(10)
 // followersGraphTemp.bfs.fromExpr("id = 'B570C0733DDB00A3FEECC4E846EFAA5799454444'").toExpr("id = '3416A6F78271208D31DFAAD0B37F937B18A295E3'").maxPathLength(2).run().show(10)
-// followersGraphTemp.bfs.fromExpr("id = 'DD387DC815CC8BD9CE423D96CD5C9F7A5D83E155'").toExpr("id = 'D5E0FF018390A9061975F25CB96E574288A3BD69'").maxPathLength(3).run().show(10)
+followersGraphTemp.bfs.fromExpr("id = 'DD387DC815CC8BD9CE423D96CD5C9F7A5D83E155'").toExpr("id = 'D5E0FF018390A9061975F25CB96E574288A3BD69'").maxPathLength(3).run().show(10)
 
 
 
