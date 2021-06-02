@@ -40,13 +40,19 @@ pageRank: (ResProb: 0.15)
 
 /// ************************** File is 23133 lines and 2.6 MB ********************
 
+Reset Probability = 0.15
+maximum Iteration = 10
+
 // ****************** NEO4J
+
 Added 37962 labels, created 37962 nodes, set 37962 properties, completed after 299637 ms (~5 min).
 
 Set 22880 properties, created 22880 relationships, completed after 523690 ms (~9 min).
 
 PageRank algorithm run result:
 Started streaming 15371 records after 9 ms and completed after 11 ms.
+
+Total Time: ~14 min
 
 "CD255F50C499F17036B5E9B79977FB8324F1A83F"	3.0961472975159805
 "19C17767F200D8E600A85095E91BB056519BD97D"	2.7251684905668783
@@ -60,8 +66,24 @@ Started streaming 15371 records after 9 ms and completed after 11 ms.
 "B8C900EE47C23F2F1702205E8CC99DFB13976527"	1.7174628725956393
 
 // ****************** Spark
+Total Number of Names: 15371
+Total Number of Connections in Graph: 23132
+Total Time = 21:04:36 - 21:01:42 ~= 3 min
 
-
++--------------------+------------------+
+|                  id|          pagerank|
++--------------------+------------------+
+|CD255F50C499F1703...| 17.36478469042329|
+|19C17767F200D8E60...|15.284144361556354|
+|FDE8832A63CBD492B...|11.283466552451875|
+|50D4675BD0E4B7669...|11.229509942249763|
+|90415D4AA0BBBCE09...|11.163903275127572|
+|2E1E9A8410B7DB141...|11.030801644818117|
+|C8E6451F411013BE0...|10.905822997095488|
+|129D03A2B2353D742...| 10.68266157110282|
+|245901C10B50A360E...|10.109515772592854|
+|B8C900EE47C23F2F1...| 9.632413711010058|
++--------------------+------------------+
 
 /// ************************** File is 271302 lines and 30.1 MB ******************
 
