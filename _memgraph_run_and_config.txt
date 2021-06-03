@@ -1,0 +1,10 @@
+docker run -p 7687:7687   -v mg_lib:/var/lib/memgraph   -v mg_log:/var/log/memgraph   -v mg_etc:/etc/memgraph   memgraph
+
+sudo docker cp /Users/emre/github/BigData/data/followersSmallNoWhiteSpace_2_6_MB.csv db4a36433538:/usr/lib/memgraph
+
+sudo docker cp db4a36433538:/etc/memgraph/memgraph.conf /Users/emre/github/BigData/data/
+
+cp /Users/emre/github/BigData/data/memgraph.conf db4a36433538:/etc/memgraph/
+
+// List all Docker processes
+docker ps -a
