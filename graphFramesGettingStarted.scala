@@ -79,3 +79,5 @@ g.vertices.groupBy().min("age").show()
 // Count the number of "follows" in the graph.
 // This queries the edge DataFrame.
 val numFollows = g.edges.filter("relationship = 'follow'").count()
+
+val motifs: GraphFrame = g.find("(a)-[e]->(b); (b)-[e2]->(a)")

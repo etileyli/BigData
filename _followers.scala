@@ -7,8 +7,9 @@ import org.apache.spark.sql.functions.{desc, asc}
 
 // Load data
 // val names = spark.read.option("header","true").csv("data/followers")
-// val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace.csv")
-val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace_271302.csv")
+val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace.csv")
+// val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace_271302.csv")
+// val names = spark.read.option("header","true").csv("data/followersSmallNoWhiteSpace_2_6_MB.csv")
 // val names = spark.read.option("header","true").csv("data/followersSmall.csv")
 
 // Count of entries in file
@@ -100,7 +101,8 @@ followersGraph.bfs.fromExpr("id = '601BB03C9BF3B57BB6E9DCA48218386BE08FA897'").t
 followersGraph.bfs.fromExpr("id = '601BB03C9BF3B57BB6E9DCA48218386BE08FA897'").toExpr("id = 'A77BE9FDC675901E5D01F116205253C8179C187C'").maxPathLength(3).run().show(10)
 
 // VIA C39F94D9576B1548FCCE1029FA68882F31888ABB and 9D36FF9F3473B1D85FA75155AAE4439A7DEEE526
-followersGraph.bfs.fromExpr("id = 'DD387DC815CC8BD9CE423D96CD5C9F7A5D83E155'").toExpr("id = 'D5E0FF018390A9061975F25CB96E574288A3BD69'").maxPathLength(3).run().show(10)
+// followersGraph.bfs.fromExpr("id = 'DD387DC815CC8BD9CE423D96CD5C9F7A5D83E155'").toExpr("id = 'D5E0FF018390A9061975F25CB96E574288A3BD69'").maxPathLength(3).run().show(10)
+followersGraph.bfs.fromExpr("id = '7140746EDF056F3DD1585956EA8C753FB0242824'").toExpr("id = '9658E06075B2B3998772B5D31F472DA6553E167F'").maxPathLength(4).run().show(10)
 // followersGraph.bfs.fromExpr("id = 'DD387DC815CC8BD9CE423D96CD5C9F7A5D83E155'").toExpr("id = 'D5E0FF018390A9061975F25CB96E574288A3BD69'").maxPathLength(3).run().show(10)
 
 

@@ -24,7 +24,11 @@ from pyspark import SparkContext
 
 spark = SparkContext()
 sqlContext = SQLContext(spark)
-# spark.sparkContext.setLogLevel('ERROR')
+spark.sparkContext.setLogLevel("FATAL")
+
+import time
+
+startTimeQuery = time.perf_counter()
 
 # Vertex DataFrame
 v = sqlContext.createDataFrame([
@@ -64,3 +68,8 @@ g.vertices.groupBy().min("age").show()
 # Count the number of "follows" in the graph.
 # This queries the edge DataFrame.
 numFollows = g.edges.filter("relationship = 'follow'").count()
+
+endTimeQuery = time.perf_counter()
+runTimeQuery = endTimeQuery - startTimeQuery
+
+print(runTimeQuery)

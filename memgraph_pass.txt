@@ -6,3 +6,10 @@ Password: DYeiUQz4xMaBXN2VSzbx
 
 etileyli@hotmail.com
 admin DYeiUQz4xMaBXN2VSzbx
+
+cypher-shell -a bolt://localhost:7687 -u admin -p DYeiUQz4xMaBXN2VSzbx
+
+admin
+hLCZAJspSZuTZrizk9ln
+
+admin hLCZAJspSZuTZrizk9ln

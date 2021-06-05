@@ -254,6 +254,11 @@ Total Time ~= 34 min
 
 
 
+// ****************** BREADTH FIRST SEARCH RESULTS ****************************
+
+///  File is 271302 lines and 30.1 MB
+        maxPathLength(2) --> ~2 sec
+        maxPathLength(3) --> ~3.5 sec
 
 
 

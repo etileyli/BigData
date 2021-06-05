@@ -1,1 +1,11 @@
 https://towardsdatascience.com/graph-processing-a-problem-with-no-clear-victor-3683c483f5dc
+
+https://neo4j.com/docs/operations-manual/current/monitoring/query-management/
+
+https://community.neo4j.com/t/load-csv-very-slow-with-millions-of-nodes/7786
+
+
+https://neo4j.com/blog/bulk-data-import-neo4j-3-0/
+As a general rule, CREATE is faster than MERGE because it doesn’t have to check
+ the data — it just pumps in the data. This is especially useful in an initial 
+ import, but keep in mind that you’ll have to check for duplicates outside of Neo4j.
