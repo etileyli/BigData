@@ -8,3 +8,5 @@ cp /Users/emre/github/BigData/data/memgraph.conf db4a36433538:/etc/memgraph/
 
 // List all Docker processes
 docker ps -a
+
+//
